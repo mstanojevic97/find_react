@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from "react-dom";
 import './index.css';
+import Hello from './components/hello';
 import {
   BrowserRouter,
   Routes,
@@ -19,6 +20,7 @@ render(
     <Routes>
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path='hello' element={<Hello/>} />
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="lala" element={<Lala />} />
