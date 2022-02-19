@@ -2,7 +2,6 @@ import {useState} from 'react'
 import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback } from '@coreui/react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {login} from '../requests/login'
 import { Axios } from 'axios'
 
 function Login() {
@@ -14,11 +13,9 @@ function Login() {
             email:emailLog,
             password:passwordLog,
             }).then((response) => {
-                console.log(response);
-            
+                console.log(response);         
         });
     };
-
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
             <div style={{height: "100px"}}></div>

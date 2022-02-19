@@ -1,8 +1,7 @@
-import {useState} from 'react'
-import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback,CFormSelect,CFormCheck } from '@coreui/react'
+import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback,} from '@coreui/react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Register} from '../requests/register'
+import {RoleSelect} from '../components/register/RoleSelect'
 
 function Register2() {
     return (
@@ -53,7 +52,7 @@ function Register2() {
                 <CRow className="mb-3">
                      <CFormLabel htmlFor="inputState" className="col-sm-2 col-form-label">Type</CFormLabel>
                       <CCol sm={10} >
-                        <Register/>
+                        <RoleSelect/>
                     </CCol>
                 </CRow>
                 <CFormFeedback valid>Please provide a valid city.</CFormFeedback>
