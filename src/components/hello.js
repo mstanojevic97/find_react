@@ -1,8 +1,7 @@
-import { CForm, CFormSelect } from '@coreui/react';
 import react from 'react'
 import { useState, useEffect} from 'react'
 
-export const Register = () => {
+const Hello = ()=>{
     const [role, setRole] = useState([]);
 
     useEffect(() => {
@@ -15,12 +14,15 @@ export const Register = () => {
           )
       }, [])
         return (
-          <CFormSelect>
-              {role.map(rol => (
-                <option key={role.idRole}>
-                  {rol.roleName}
-                </option>
-              ))}
-          </CFormSelect>
+          <ul>
+            {role.map(rol => (
+              <li key={role.idRole}>
+                {rol.idRole} {rol.roleName}
+              </li>
+            ))}
+          </ul>
         );
-};
+    }
+
+
+export default Hello;
