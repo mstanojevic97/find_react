@@ -11,8 +11,6 @@ function Register() {
       register({email: 'stevanko@gmail.com', password:'Test.123'}, (res) => console.log(res))
       const form = event.currentTarget
     }
-
-
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
         <div style={{height: "100px"}}></div>

@@ -3,26 +3,27 @@ import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback } fro
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {login} from '../requests/login'
+import { Axios } from 'axios'
 
 function Login() {
-    const [validated, setValidated] = useState(false)
-    const handleSubmit = (event) => {
-      event.preventDefault()
-      login({email: 'stevanko@gmail.com', password:'Test.123'}, (res) => console.log(res))
-      const form = event.currentTarget
-    //   if (form.checkValidity() === false) {
-    //     event.preventDefault()
-    //     event.stopPropagation()
-    //   }
-    //   setValidated(true)
-    }
+    const [emailLog,setEmailLog] = useState('')
+    const [passwordLog,setPasswordLog] = useState('')
+      
+    const login = ()=> {
+        Axios.post("http://localhost:5000/auth/login",{
+            email:emailLog,
+            password:passwordLog,
+            }).then((response) => {
+                console.log(response);
+            
+        });
+    };
 
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
             <div style={{height: "100px"}}></div>
             <CForm 
-                validated={validated} 
-                onSubmit={handleSubmit}
+                
                 style={{
                     padding: "20px", 
                     maxWidth:"500px", 
@@ -33,27 +34,30 @@ function Login() {
                 }}>
                 <div style={{height: "20px"}}></div>
                 <CRow className="mb-3">
-                    <CFormLabel htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</CFormLabel>
+                    <CFormLabel  className="col-sm-2 col-form-label">Email</CFormLabel>
                     <CCol sm={10} >
-                    <CFormInput type="email" id="inputEmail3"/>
+                    <CFormInput type="email" onChange={(e) =>{
+                        setPasswordLog(e.target.value)
+                    }}/>
                     </CCol>
                 </CRow>
                 <div style={{height: "20px"}}></div>
                 <CRow className="mb-3">
-                    <CFormLabel htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</CFormLabel>
+                    <CFormLabel  className="col-sm-2 col-form-label">Password</CFormLabel>
                     <CCol sm={10} >
-                    <CFormInput type="password" id="inputPassword3"/>
+                    <CFormInput type="password" onChange={(e) =>{
+                        setEmailLog(e.target.value)
+                        }}/>
                     </CCol>
                 </CRow>
                 <CFormFeedback valid>Please provide a valid city.</CFormFeedback>
                 <div style={{height: "20px"}}></div>
                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <CButton type="submit" shape="rounded-pill" style={{width: "100px"}}>Sign in</CButton>
+                        <CButton onClick={login} type="submit" shape="rounded-pill" style={{width: "100px"}}>Sign in</CButton>
                 </div>
                 <div style={{height: "20px"}}></div>
             </CForm>
         </div>
     );
 }
-
 export default Login;
