@@ -2,15 +2,26 @@ import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback,} fro
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {RoleSelect} from '../components/register/RoleSelect'
+import { RegisterColect } from "../requests/register";
 
-function Register2() {
+function Register() {
+    const HandleRegister=(event)=>{
+        const data={
+            companyName:event.target.companyName,
+            email:event.target.email,
+            password:event.target.password,
+            VAT:event.target.VAT,
+            roleName:event.target.roleName
+        }
+        RegisterColect(data);
+    }
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
         <div style={{height: "100px"}}></div>
             
         <CForm 
                 //validated={validated} 
-                //onSubmit={handleSubmit}
+                onSubmit={HandleRegister}
                 style={{
                     padding: "20px", 
                     maxWidth:"500px", 
@@ -23,7 +34,7 @@ function Register2() {
                 <CRow className="mb-3">
                     <CFormLabel htmlFor="inputName" className="col-sm-2 col-form-label">Company</CFormLabel>
                     <CCol sm={10} >
-                    <CFormInput type="name" id="inputName"/>
+                    <CFormInput type="name" name="companyName"/>
                     </CCol>
                 </CRow>
 
@@ -31,21 +42,21 @@ function Register2() {
                 <CRow className="mb-3">
                     <CFormLabel htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</CFormLabel>
                     <CCol sm={10} >
-                    <CFormInput type="email" id="inputEmail3"/>
+                    <CFormInput type="email" name="email"/>
                     </CCol>
                 </CRow>
                 <div style={{height: "20px"}}></div>
                 <CRow className="mb-3">
                     <CFormLabel htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</CFormLabel>
                     <CCol sm={10} >
-                    <CFormInput type="password" id="inputPassword3"/>
+                    <CFormInput type="password" name="password"/>
                     </CCol>
                 </CRow>
                 <div style={{height: "20px"}}></div>
                 <CRow className="mb-3">
                     <CFormLabel htmlFor="inputZip" className="col-sm-2 col-form-label">VAT</CFormLabel>
                     <CCol sm={10} >
-                    <CFormInput type="Zip" id="inputZip"/>
+                    <CFormInput type="Zip" name="VAT"/>
                     </CCol>
                 </CRow>
                 <div style={{height: "20px"}}></div>
@@ -67,4 +78,4 @@ function Register2() {
     );
 }
 
-export default Register2;
+export default Register;

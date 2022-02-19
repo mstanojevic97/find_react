@@ -10,9 +10,9 @@ export const RoleSelect = () => {
       setRole(res)});
   }, []);
   return (
-    <CFormSelect>
+    <CFormSelect name="roleName">
       {role.map((rol) => (
-        <option key={role.idRole}>{rol.roleName}</option>
+        <option key={rol.idRole}>{rol.roleName}</option>
       ))}
     </CFormSelect>
   );
