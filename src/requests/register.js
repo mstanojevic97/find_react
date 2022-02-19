@@ -1,21 +1,26 @@
-import axios from 'axios';
+import { CForm, CFormSelect } from '@coreui/react';
+import react from 'react'
+import { useState, useEffect} from 'react'
 
-export const register = (data, callback) => {
-    debugger
-    //axios.post(config.baseURL + 'auth/login', data)
-    // axios.post('localhost:5000/auth/login', data)
-    // .then(res => {
-    //     console.log('AAAAA')
-    //     callback(res)
-    // })
-    axios({
-        method: 'post',
-        url: 'http://localhost:5000/auth/register',
-        data: data
-    })
-    .then(res => {
-        console.log('AAAAA')
-        callback(res)
-    })
-}
+export const Register = () => {
+    const [role, setRole] = useState([]);
 
+    useEffect(() => {
+        fetch("/auth/role")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setRole(result);
+            },
+          )
+      }, [])
+        return (
+          <CFormSelect>
+              {role.map(rol => (
+                <option key={role.idRole}>
+                  {rol.roleName}
+                </option>
+              ))}
+          </CFormSelect>
+        );
+};

@@ -8,7 +8,7 @@ import {
   Route
 } from "react-router-dom";
 import Login from "./pages/login";
-import Register from "./pages/register";
+import Register2 from "./pages/register";
 import Home from "./pages/home";
 import Lala from "./pages/lala";
 import MainLayout from "./layout/mainLayout";
@@ -19,7 +19,7 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
+      <Route path="register" element={<Register2 />} />
       <Route path='hello' element={<Hello/>} />
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={<Home />} />

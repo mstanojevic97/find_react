@@ -2,24 +2,17 @@ import {useState} from 'react'
 import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback,CFormSelect,CFormCheck } from '@coreui/react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {register} from '../requests/register'
+import {Register} from '../requests/register'
 
-function Register() {
-    const [validated, setValidated] = useState(false)
-    const handleSubmit = (event) => {
-      event.preventDefault()
-      register({email: 'stevanko@gmail.com', password:'Test.123'}, (res) => console.log(res))
-      const form = event.currentTarget
-    }
-
-
+function Register2() {
+   
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
         <div style={{height: "100px"}}></div>
             
         <CForm 
-                validated={validated} 
-                onSubmit={handleSubmit}
+                //validated={validated} 
+                //onSubmit={handleSubmit}
                 style={{
                     padding: "20px", 
                     maxWidth:"500px", 
@@ -61,10 +54,7 @@ function Register() {
                 <CRow className="mb-3">
                      <CFormLabel htmlFor="inputState" className="col-sm-2 col-form-label">Type</CFormLabel>
                       <CCol sm={10} >
-                      <CFormSelect id="inputState">
-                        <option>Producer</option>
-                        <option>Supplier</option>
-                    </CFormSelect>
+                        <Register/>
                     </CCol>
                 </CRow>
                 <CFormFeedback valid>Please provide a valid city.</CFormFeedback>
@@ -79,4 +69,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Register2;
