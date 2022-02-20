@@ -19,7 +19,6 @@ function Register() {
         }
         RegisterColect(data)
         .then(() => {
-            debugger
             navigate('/login');
         });
     }

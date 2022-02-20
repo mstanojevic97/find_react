@@ -19,7 +19,6 @@ export async function RegisterColect(data){
     },
     body: JSON.stringify(data2)
   }).then((res) => {
-    debugger
     res.json()
   })
 };
