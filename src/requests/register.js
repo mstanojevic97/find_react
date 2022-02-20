@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 export async function getRoles() {
  return fetch("/auth/role").then((res) => res.json());  
 }
@@ -10,15 +12,14 @@ export async function RegisterColect(data){
     password:data.password.value,
     roleName:data.roleName.value
   };
-  fetch("/auth/register",{
+  return fetch("/auth/register",{
     method:"POST",
     headers:{
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data2)
+  }).then((res) => {
+    debugger
+    res.json()
   })
-    .then(response=>response.json())
-    .then(data2=>{
-      console.log(data2);
-    })
 };

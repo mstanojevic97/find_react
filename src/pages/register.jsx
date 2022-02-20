@@ -3,9 +3,13 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {RoleSelect} from '../components/register/RoleSelect'
 import { RegisterColect } from "../requests/register";
+import { useNavigate  } from 'react-router-dom'
 
 function Register() {
+    const navigate = useNavigate();
+
     const HandleRegister=(event)=>{
+        event.preventDefault()
         const data={
             companyName:event.target.companyName,
             email:event.target.email,
@@ -13,7 +17,11 @@ function Register() {
             VAT:event.target.VAT,
             roleName:event.target.roleName
         }
-        RegisterColect(data);
+        RegisterColect(data)
+        .then(() => {
+            debugger
+            navigate('/login');
+        });
     }
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
