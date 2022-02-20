@@ -10,7 +10,6 @@ export async function RegisterColect(data){
     password:data.password.value,
     roleName:data.roleName.value
   };
-  debugger
   fetch("/auth/register",{
     method:"POST",
     headers:{
@@ -18,7 +17,7 @@ export async function RegisterColect(data){
     },
     body: JSON.stringify(data2)
   })
-    .then(response=>response.jsno())
+    .then(response=>response.json())
     .then(data2=>{
       console.log(data2);
     })
