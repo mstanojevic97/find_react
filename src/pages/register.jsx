@@ -7,7 +7,6 @@ import { useNavigate  } from 'react-router-dom'
 
 function Register() {
     const navigate = useNavigate();
-
     const HandleRegister=(event)=>{
         event.preventDefault()
         const data={

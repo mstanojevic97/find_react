@@ -11,6 +11,7 @@ import Register from "./pages/register";
 import Home from "./pages/home";
 import Lala from "./pages/lala";
 import MainLayout from "./layout/mainLayout";
+import Admin from './pages/admin';
 
 
 const rootElement = document.getElementById("root");
@@ -22,6 +23,7 @@ render(
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="lala" element={<Lala />} />
+        <Route path="admin" element={<Admin />} />
       </Route>
     </Routes>
   </BrowserRouter>,
