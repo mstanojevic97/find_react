@@ -2,19 +2,31 @@ import {useState} from 'react'
 import { CForm, CFormLabel, CFormInput, CButton, CCol, CRow, CFormFeedback } from '@coreui/react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Axios } from 'axios'
+import {loginUser} from '../requests/login'
+import { useNavigate  } from 'react-router-dom'
 
 function Login() {
+    const navigate = useNavigate();
+
     const [emailLog,setEmailLog] = useState('')
     const [passwordLog,setPasswordLog] = useState('')
       
-    const login = ()=> {
-        Axios.post("http://localhost:5000/auth/login",{
-            email:emailLog,
-            password:passwordLog,
-            }).then((response) => {
-                console.log(response);         
-        });
+    const login = (e) => {
+        e.preventDefault()
+        
+        const data = {
+            email: emailLog,
+            password: passwordLog
+        }
+        
+        loginUser(data) 
+        .then(() => {
+            navigate('/');
+        })
+        .catch((err) => {
+            console.log(err)
+            alert(err)
+        })
     };
     return (
         <div style={{backgroundColor: '#EEE82C', height: "100%"}}>
@@ -34,7 +46,7 @@ function Login() {
                     <CFormLabel  className="col-sm-2 col-form-label">Email</CFormLabel>
                     <CCol sm={10} >
                     <CFormInput type="email" onChange={(e) =>{
-                        setPasswordLog(e.target.value)
+                        setEmailLog(e.target.value)
                     }}/>
                     </CCol>
                 </CRow>
@@ -43,7 +55,7 @@ function Login() {
                     <CFormLabel  className="col-sm-2 col-form-label">Password</CFormLabel>
                     <CCol sm={10} >
                     <CFormInput type="password" onChange={(e) =>{
-                        setEmailLog(e.target.value)
+                        setPasswordLog(e.target.value)
                         }}/>
                     </CCol>
                 </CRow>
