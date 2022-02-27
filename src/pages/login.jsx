@@ -18,8 +18,8 @@ function Login() {
             email: emailLog,
             password: passwordLog
         }
-        
-        loginUser(data) 
+        debugger
+        loginUser(data)
         .then(() => {
             navigate('/');
         })

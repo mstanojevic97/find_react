@@ -20,4 +20,4 @@ export async function postData(url = '', data = {}) {
     } else {
         return json.then(Promise.reject.bind(Promise));
     }
-  }
+  } 

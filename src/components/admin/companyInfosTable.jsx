@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -13,138 +12,102 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import {useEffect, useState} from 'react'
+import {getData} from '../../requests/admin'
 
-function createData(name, calories, fat, carbs, protein, price) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
-    ],
-  };
+function AdminData(){
+  const [admin, setAdmin] = useState([]);
+    useEffect(() =>{
+      getData().then((res) =>{
+        setAdmin(res.admin);
+      })
+  },[]);
+  return(
+    <div>
+      <h3>About Admin</h3>
+      <div>
+        <TableContainer component={Paper}>
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell align='center'>Surname</TableCell>
+                <TableCell align='center'>Email</TableCell>
+                <TableCell align='center'>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>{admin.name}</TableCell>
+                <TableCell align='center'>{admin.surname}</TableCell>
+                <TableCell align='center'>{admin.email}</TableCell>
+                <TableCell align='center'><a href='#'>Edit</a></TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </div>
+    
+  );
 }
 
-function Row(props) {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
 
+
+function Row() {
+  const [open, setOpen] = React.useState(false);
+  const [companies, setCompanies] = useState([]);
+    useEffect(() =>{
+      getData().then((res) =>{
+        setCompanies(res.companies);
+      })
+  },[]);
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                History
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
+      <div>
+          <h3>Companies</h3>
+        <div>
+          <TableContainer component={Paper}>
+            <Table aria-label="collapsible table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">IdCompany</TableCell>
+                  <TableCell align="center">CompanyName</TableCell>
+                  <TableCell align="center">Email</TableCell>
+                  <TableCell align='center'>VAT</TableCell>
+                  <TableCell align='center'>Type</TableCell>
+                  <TableCell align='center'>Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                  {companies.map((companie)=>(
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                      <TableCell key={companie.idCompany} align='left'>{companie.idCompany}</TableCell>
+                      <TableCell key={companie.idCompany} align='center'>{companie.companyName}</TableCell>
+                      <TableCell key={companie.idCompany} align='center'>{companie.email}</TableCell>
+                      <TableCell key={companie.idCompany} align='center'>{companie.VAT}</TableCell>
+                      <TableCell key={companie.idCompany} align='center'>{companie.roleName}</TableCell>
+                      <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='#'>Izmeni</a></TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
                   ))}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+    </div>
     </React.Fragment>
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0),
-  createData('Ice cream sandwich', 237, 9.0),
-  createData('Eclair', 262, 16.0),
-  createData('Cupcake', 305, 3.75),
-  createData('Gingerbread', 356, 16.0),
-];
-
 export function CollapsibleTable() {
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Company</TableCell>
-            <TableCell align="right">VAT</TableCell>
-            <TableCell align="right">Email</TableCell>
-    
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div>
+      <div>
+        <AdminData/>
+      </div>
+      <div style={{paddingTop: 10}}>
+        <Row/>
+      </div>
+    </div>
   );
 }
