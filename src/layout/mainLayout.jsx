@@ -22,15 +22,16 @@ import {
 
 function MainLayout() {
   const [visible, setVisible] = useState(false)
+  
 
 return (
   <>
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
-      <CContainer fluid>
-        <CNavbarBrand href="/"><img src={logo}/></CNavbarBrand>
+    <CNavbar expand="lg" colorScheme="light" className="bg-light" >
+      <CContainer fluid flex-start>
+        <CNavbarBrand href="/"><img src={logo} style={{width:50,height:50, marginTop: -6}}/></CNavbarBrand>
         <CNavbarToggler onClick={() => setVisible(!visible)} />
-        <CCollapse className="navbar-collapse" visible={visible}>
-          <CNavbarNav>
+        <CCollapse className="navbar-collapse" visible={visible} >
+          <CNavbarNav className="justify-content-end" style={{ width: "100%" ,marginTop:"-14px"}} >
             <CNavItem>
               <CNavLink href="#" active>
                 Home
@@ -48,15 +49,11 @@ return (
                 <CDropdownItem href="#">Something else here</CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
-            <CNavItem>
-              <CNavLink href="#" disabled>
-                Disabled
-              </CNavLink>
-            </CNavItem>
-            <CNavItem className="justify-content-end">
+            
+            <CNavbarNav className="justify-content-end" style={{ width: "100%" }}>  
               <CNavLink href="/login">LogIn</CNavLink>
               <CNavLink href="/register">Register</CNavLink>
-            </CNavItem>
+            </CNavbarNav>
           </CNavbarNav>
         </CCollapse>
       </CContainer>

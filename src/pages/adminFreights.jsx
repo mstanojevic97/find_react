@@ -1,10 +1,11 @@
-import {CompanyData} from '../components/admin/freightsInfo';
+import * as React from 'react'
+import { CollapsibleTableFreight } from '../components/admin/freightsInfo';
 
 function AdminFreight() {
   
     return (
       <>
-        <CompanyData />
+        <CollapsibleTableFreight/>
       </>
     )    
 }
