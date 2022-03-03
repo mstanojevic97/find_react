@@ -13,6 +13,8 @@ import Lala from "./pages/lala";
 import MainLayout from "./layout/mainLayout";
 import Admin from './pages/admin';
 import AdminFreight from '../src/pages/adminFreights'
+import Producer from '../src/pages/producer';
+import Supplier from '../src/pages/supplier'
 
 
 const rootElement = document.getElementById("root");
@@ -26,6 +28,9 @@ render(
         <Route path="lala" element={<Lala />} />
         <Route path="admin" element={<Admin />} />
         <Route path="freight" element={<AdminFreight />} />
+        <Route path="producer" element={<Producer />} />
+        <Route path="supplier" element={<Supplier />} />
+
       </Route>
     </Routes>
   </BrowserRouter>,
