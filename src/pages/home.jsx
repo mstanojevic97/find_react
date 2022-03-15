@@ -3,100 +3,282 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import picture1 from '../innovation.png';
-import picture2 from '../safety.png';
-import picture3 from '../network.png';
+import { CardActionArea} from '@mui/material';
+import picture1 from '../pic1.png';
+import picture2 from '../pic2.png';
+import picture3 from '../pic3.png';
+import picture5 from '../pic5.png';
+import picture6 from '../pic6.png';
+import picture7 from '../pic7.png';
+import picture8 from '../pic8.png';
+import picture9 from '../pic9.png';
+import picture4 from '../background.png';
+import { Container, Row, Col } from 'react-grid-system';
+import { IoFastFood } from "react-icons/io5";
+
+
+
+
+
 
 function Home() {
     return (
       <main style={{ padding: "0px" }}>
-        <div>
-          <img src={picture} width="100%" height="50%" />
-        </div>
-        <div className="container">
-          <div className="row">
-            <Card
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            sx={{ maxWidth: 345 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  img src ={picture1} width="100%" height="50%" 
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Hasslefree Shipment
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    We provide hasslefree shipping and seamless logistics
-                    solutions for all your shipping needs, whether big or small,
-                    to all parts of India.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              sx={{ maxWidth: 345 }}
-            >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  img src ={picture2} width="100%" height="50%"
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Leading Edge Technology{" "}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Our adoption of technology, proven expertise and networks
-                    brings us to the forefront in bringing automation to tailor
-                    our solutions for your logistics needs.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              sx={{ maxWidth: 345 }}
-            >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  img src ={picture3} width="100%" height="50%"
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Safety & Reliability
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    We drive reliability and safety in logistics through
-                    effective implementation of security tools and technologies
-                    to drive efficiency and operational excellence.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+        <div style={{ backgroundImage: `url(${picture4})` }}>
+          <div>
+            <img src={picture} width="100%" height="50%" />
+
+            <div className="container">
+              <div className="row">
+                <Card
+                  style={{
+                    marginTop: "-100px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  sx={{ maxWidth: 425 }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      img
+                      src={picture1}
+                      width="100%"
+                      height="50%"
+                      alt="green iguana"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Hasslefree Shipment
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        We provide hasslefree shipping and seamless logistics
+                        solutions for all your shipping needs, whether big or
+                        small, to all parts of India.
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+                <Card
+                  style={{
+                    marginTop: "-100px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  sx={{ maxWidth: 425 }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      img
+                      src={picture2}
+                      width="100%"
+                      height="50%"
+                      alt="green iguana"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Leading Edge Technology{" "}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Our adoption of technology, proven expertise and
+                        networks brings us to the forefront in bringing
+                        automation to tailor our solutions for your logistics
+                        needs.
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+                <Card
+                  style={{
+                    marginTop: "-100px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  sx={{ maxWidth: 425 }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      img
+                      src={picture3}
+                      width="100%"
+                      height="50%"
+                      alt="green iguana"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Safety & Reliability
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        We drive reliability and safety in logistics through
+                        effective implementation of security tools and
+                        technologies to drive efficiency and operational
+                        excellence.
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </div>
+            </div>
           </div>
+        </div>
+        <div style={{ marginTop: "25px" }} className="text-center">
+          <h2>
+            <b>What we offer</b>
+          </h2>
+          <p>TAILORED LOGISTIC SERVICES</p>
+        </div>
+        <div class="text-center">
+          <Container>
+            <Row>
+              <Col sm={4}>
+                <img
+                  component="img"
+                  img
+                  src={picture5}
+                  width="50%"
+                  height="50%"
+                />
+                <h4>Contract logistics</h4>
+                <p>
+                  Need custom logistic service? We got it covered. From
+                  overland, air, rail and sea transportation. Fast, safe and
+                  accurate shipment provided all over the globe.
+                </p>
+              </Col>
+              <Col sm={4}>
+                <img
+                  component="img"
+                  img
+                  src={picture6}
+                  width="50%"
+                  height="50%"
+                />
+                <h4>Contract logistics</h4>
+                <p>
+                  Need custom logistic service? We got it covered. From
+                  overland, air, rail and sea transportation. Fast, safe and
+                  accurate shipment provided all over the globe.
+                </p>
+              </Col>
+              <Col sm={4}>
+                <img
+                  component="img"
+                  img
+                  src={picture7}
+                  width="50%"
+                  height="50%"
+                />
+                <h4>Contract logistics</h4>
+                <p>
+                  Need custom logistic service? We got it covered. From
+                  overland, air, rail and sea transportation. Fast, safe and
+                  accurate shipment provided all over the globe.
+                </p>
+              </Col>
+            </Row>
+          </Container>
+          <Container style={{ backgroundColor: "#2c3741", maxWidth: "2000px" }}>
+            <Row>
+              <Col sm={6}>
+                <div
+                  style={{
+                    paddingTop: "50px",
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <h3
+                    style={{
+                      color: "#fff",
+                      fontFamily: "Raleway",
+                      lineHeight: "24px",
+                      fontStyle: "bold",
+                      fontSize: "21px",
+                      opacity: "1",
+                      visibility: "visible",
+                    }}
+                  >
+                    INDUSTRY SECTORS COVERAGE
+                  </h3>
+                </div>
+                <div>
+                  <p
+                    style={{
+                      marginLeft: "200px",
+                      color: "#fff",
+                      fontFamily: "Open Sans",
+                      lineHeight: "22px",
+                      fontWeight: "normal",
+                      fontSize: "13px",
+                    }}
+                  >
+                    We cover different industry sectors, from food and beverage,
+                    chemical, retail, durable goods and more.
+                  </p>
+                </div>
+                <ul>
+                  <li>
+                    <div>
+                      <h5
+                        style={{
+                          color: "#fff",
+                          fontFamily: "Open Sans",
+                        }}
+                      >
+                        <IoFastFood/>  Consumer Packaged Goods
+                      </h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div > 
+                      <h5 
+                        style={{
+                          color: "#fff",
+                          fontFamily: "Open Sans",
+                        }}
+                      >Chemical Goods
+                      </h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                    <h5
+                        style={{
+                          color: "#fff",
+                          fontFamily: "Open Sans",
+                        }}
+                      > Chemical Goods
+                      </h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                    <h5
+                        style={{
+                          color: "#fff",
+                          fontFamily: "Open Sans",
+                        }}
+                      > Chemical Goods
+                      </h5>
+                    </div>
+                  </li>
+                </ul>
+              </Col>
+              <Col sm={6}>
+                <img
+                  component="img"
+                  img
+                  src={picture8}
+                  width="102%"
+                  height="100%"
+                />
+              </Col>
+            </Row>
+          </Container>
         </div>
       </main>
     );
