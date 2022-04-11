@@ -18,7 +18,6 @@ function Login() {
             email: emailLog,
             password: passwordLog
         }
-        debugger
         loginUser(data)
         .then(() => {
             navigate('/');

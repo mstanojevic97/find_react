@@ -7,7 +7,11 @@ export async function getCompany(){
 }
 
 export async function getCompanyData(){
-    return fetch("/home/producer").then((res) =>res.json());
+    return fetch("/home/producer", {
+        headers: new Headers({
+            'Authorization': localStorage.getItem('jwtToken')
+        }),
+    }).then((res) =>res.json());
 }
 
 
