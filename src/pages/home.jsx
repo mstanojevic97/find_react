@@ -11,10 +11,13 @@ import picture5 from '../pic5.png';
 import picture6 from '../pic6.png';
 import picture7 from '../pic7.png';
 import picture8 from '../pic8.png';
-import picture9 from '../pic9.png';
 import picture4 from '../background.png';
 import { Container, Row, Col } from 'react-grid-system';
 import { IoFastFood } from "react-icons/io5";
+import { MdRecycling } from "react-icons/md";
+import { FaGasPump } from "react-icons/fa";
+import { GoPackage } from "react-icons/go";
+
 
 
 
@@ -116,8 +119,7 @@ function Home() {
                       <Typography variant="body2" color="text.secondary">
                         We drive reliability and safety in logistics through
                         effective implementation of security tools and
-                        technologies to drive efficiency and operational
-                        excellence.
+                        technologies to drive efficiency and operational.
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -208,7 +210,7 @@ function Home() {
                 <div>
                   <p
                     style={{
-                      marginLeft: "200px",
+                      marginLeft: "50px",
                       color: "#fff",
                       fontFamily: "Open Sans",
                       lineHeight: "22px",
@@ -221,51 +223,52 @@ function Home() {
                   </p>
                 </div>
                 <ul>
-                  <li>
-                    <div>
-                      <h5
-                        style={{
-                          color: "#fff",
-                          fontFamily: "Open Sans",
-                        }}
-                      >
-                        <IoFastFood/>  Consumer Packaged Goods
-                      </h5>
-                    </div>
-                  </li>
-                  <li>
-                    <div > 
-                      <h5 
-                        style={{
-                          color: "#fff",
-                          fontFamily: "Open Sans",
-                        }}
-                      >Chemical Goods
-                      </h5>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
+                  <div>
                     <h5
-                        style={{
-                          color: "#fff",
-                          fontFamily: "Open Sans",
-                        }}
-                      > Chemical Goods
-                      </h5>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
+                      style={{
+                        color: "#fff",
+                        fontFamily: "Open Sans",
+                        paddingBottom:"5px"
+                      }}
+                    >
+                      <IoFastFood /> Food and Beverage
+                    </h5>
+                  </div>
+
+                  <div>
                     <h5
-                        style={{
-                          color: "#fff",
-                          fontFamily: "Open Sans",
-                        }}
-                      > Chemical Goods
-                      </h5>
-                    </div>
-                  </li>
+                      style={{
+                        color: "#fff",
+                        fontFamily: "Open Sans",
+                        paddingBottom:"5px"
+                      }}
+                    >
+                      <MdRecycling /> Chemical Goods
+                    </h5>
+                  </div>
+
+                  <div>
+                    <h5
+                      style={{
+                        color: "#fff",
+                        fontFamily: "Open Sans",
+                        paddingBottom:"5px"
+                      }}
+                    >
+                      <GoPackage /> Consumer Packaged Goods
+                    </h5>
+                  </div>
+
+                  <div>
+                    <h5
+                      style={{
+                        color: "#fff",
+                        fontFamily: "Open Sans",
+                      }}
+                    >
+                      <FaGasPump /> Energy, Oil and Gas
+                    </h5>
+                  </div>
                 </ul>
               </Col>
               <Col sm={6}>
@@ -278,6 +281,29 @@ function Home() {
                 />
               </Col>
             </Row>
+          </Container>
+        </div>
+        <div>
+          <Container style={{ backgroundColor: "#5D707F", maxWidth: "2000px",color:"white"}}>
+         <Row>
+          <Col sm={4}>
+          <p style={{display:"flex",justifyContent:"center"}}>Richers truck bodies</p>
+           <p style={{display:"flex",justifyContent:"center"}}>Pcinjska 13</p>
+           <p style={{display:"flex",justifyContent:"center"}}>Vladicin Han 17510</p>
+          
+          </Col>
+          <Col sm={4}>
+          <p style={{display:"flex",justifyContent:"center"}}>Phone:(381)621660-803</p>
+           <p style={{display:"flex",justifyContent:"center"}}>Text Message:(381)637029-286</p>
+           <p style={{display:"flex",justifyContent:"center"}}>Email:misko@gmail.com</p>
+          
+          </Col>
+          <Col sm={4}>
+          <p style={{display:"flex",justifyContent:"center"}}>Copyright © 2019-2022 Riechers Truck Bodies.</p>
+          <p style={{display:"flex",justifyContent:"center"}}>All rights reserved.  Sitemap  |  Privacy Policy</p>
+          
+          </Col>
+          </Row>
           </Container>
         </div>
       </main>
