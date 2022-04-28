@@ -28,7 +28,7 @@ return (
   <>
     <CNavbar expand="lg" colorScheme="light" className="bg-light" >
       <CContainer fluid flex-start>
-        <CNavbarBrand href="/"><img src={logo} style={{width:50,height:50, marginTop: -6}}/></CNavbarBrand>
+        <CNavbarBrand href="/"><img alt="lala" src={logo} style={{width:50,height:50, marginTop: -6}}/></CNavbarBrand>
         <CNavbarToggler onClick={() => setVisible(!visible)} />
         <CCollapse className="navbar-collapse" visible={visible} >
           <CNavbarNav className="justify-content-end" style={{ width: "100%" ,marginTop:"-14px"}} >

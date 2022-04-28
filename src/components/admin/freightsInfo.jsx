@@ -1,19 +1,16 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import {useEffect, useState} from 'react'
-import {getCompany, getData,getCompanyData} from '../../requests/admin'
+import {
+  // getCompany, 
+  // getData,
+  getCompanyData} from '../../requests/admin'
 
 function CompanyData(){
     const [company, setCompany] = useState([]);
@@ -41,7 +38,7 @@ function CompanyData(){
                   <TableCell>{company.companyName}</TableCell>
                   <TableCell align='center'>{company.VAT}</TableCell>
                   <TableCell align='center'>{company.email}</TableCell>
-                  <TableCell align='center'><a href='#'>Edit</a></TableCell>
+                  <TableCell align='center'><a href='/#'>Edit</a></TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -54,7 +51,6 @@ function CompanyData(){
 
   
 function Row() {
-    const [open, setOpen] = React.useState(false);
     const [freightFree, setFreightFree] = useState([]);
       useEffect(() =>{
         getCompanyData().then((res) =>{
@@ -91,7 +87,7 @@ function Row() {
                         <TableCell key={freightFreee.length} align='center'>{freightFreee.length}</TableCell>
                         <TableCell key={freightFreee.note} align='center'>{freightFreee.note}</TableCell>
                         <TableCell key={freightFreee.price} align='center'>{freightFreee.price}</TableCell>
-                        <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='#'>Izmeni</a></TableCell>
+                        <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='/#'>Izmeni</a></TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
@@ -105,7 +101,6 @@ function Row() {
 
 
 function Row2() {
-    const [open, setOpen] = React.useState(false);
     const [freightTaken, setFreightTaken] = useState([]);
       useEffect(() =>{
         getCompanyData().then((res) =>{
@@ -141,7 +136,7 @@ function Row2() {
                         <TableCell key={freightTakenn.length} align='center'>{freightTakenn.length}</TableCell>
                         <TableCell key={freightTakenn.note} align='center'>{freightTakenn.note}</TableCell>
                         <TableCell key={freightTakenn.price} align='center'>{freightTakenn.price}</TableCell>
-                        <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='#'>Izmeni</a></TableCell>
+                        <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='/#'>Izmeni</a></TableCell>
                     </TableRow>
                     ))}
                 </TableBody>

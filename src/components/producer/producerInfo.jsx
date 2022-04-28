@@ -12,45 +12,82 @@ import {
   //getCompany, 
   //getData,
   getCompanyData} from '../../requests/admin'
+import AddFreightModal from "./AddFreightModal"
+import SuccessInfoModal from "../modals/SuccessInfoModal"
 
 function ProducerData(){
+    const [addFreightModalOpen, setAddFreightModalOpen] = useState(false);
+    const [successInfoModalOpen, setSuccessInfoModalOpen] = useState(false);
+
     const [company, setCompany] = useState([]);
       useEffect(() =>{
         getCompanyData().then((res) =>{
           setCompany(res.producer);
         })
     },[]);
+
+    const addFreightModalHandleClose = () => {
+      setAddFreightModalOpen(false);
+    }
+
     return (
-      <div>
-        <h3>About Company</h3>
-        <Button variant="primary" size="lg" className="justify-content-end" style={{ width: "95%"}}>
-     <h6><b>Add new freight</b></h6>
-    </Button>{' '}
+      <>
+        {
+          addFreightModalOpen ? 
+          <AddFreightModal 
+            isOpen = {addFreightModalOpen} 
+            handleClose = {addFreightModalHandleClose} 
+            onSuccess = {() => setSuccessInfoModalOpen(true)}/>
+          : ''
+        }
+
+        {
+          successInfoModalOpen ? 
+          <SuccessInfoModal 
+            isOpen = {successInfoModalOpen} 
+            handleClose = {() => {
+              setSuccessInfoModalOpen(false); 
+              window.location.reload(false);
+            }}
+            message = "Freight has been added."/>
+          : ''
+        } 
         <div>
-          <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="center">VAT</TableCell>
-                  <TableCell align="center">Email</TableCell>
-                  <TableCell align="center">Action</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>{company.companyName}</TableCell>
-                  <TableCell align="center">{company.VAT}</TableCell>
-                  <TableCell align="center">{company.email}</TableCell>
-                  <TableCell align="center">
-                    <a href="/#">Edit</a>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <h3>About Company</h3>
+          <Button 
+            variant="contained" 
+            size="lg" 
+            className="justify-content-end" 
+            style={{float: "right", marginBottom: "10px", marginRight: "10px"}}
+            onClick = {() => setAddFreightModalOpen(true)}>
+            Add new freight
+          </Button>
+          <div>
+            <TableContainer component={Paper}>
+              <Table aria-label="collapsible table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell align="center">VAT</TableCell>
+                    <TableCell align="center">Email</TableCell>
+                    <TableCell align="center">Action</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>{company.companyName}</TableCell>
+                    <TableCell align="center">{company.VAT}</TableCell>
+                    <TableCell align="center">{company.email}</TableCell>
+                    <TableCell align="center">
+                      <a href="/#">Edit</a>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -141,7 +178,7 @@ function Row2() {
                         <TableCell key={freightTakenn.length} align='center'>{freightTakenn.length}</TableCell>
                         <TableCell key={freightTakenn.note} align='center'>{freightTakenn.note}</TableCell>
                         <TableCell key={freightTakenn.price} align='center'>{freightTakenn.price}</TableCell>
-                        <TableCell align='center'><a href='/freight'>123</a>/<a href='#'>Izmeni</a></TableCell>
+                        <TableCell align='center'><a href='/freight'>123</a>/<a href='/#'>Izmeni</a></TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
@@ -153,7 +190,7 @@ function Row2() {
     );
   }
   
-  export function   CollapsibleTableProducer() {
+  export function CollapsibleTableProducer() {
     return (
       <div>
         <div>
