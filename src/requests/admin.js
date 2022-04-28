@@ -1,3 +1,5 @@
+import {requestWithAuthHeder} from './index'
+
 export async function getData(){
     return fetch("home/admin").then((res) =>res.json());
 }
@@ -7,11 +9,7 @@ export async function getCompany(){
 }
 
 export async function getCompanyData(){
-    return fetch("/home/producer", {
-        headers: new Headers({
-            'Authorization': localStorage.getItem('jwtToken')
-        }),
-    }).then((res) =>res.json());
+    return requestWithAuthHeder("/home/producer", "get");
 }
 
 

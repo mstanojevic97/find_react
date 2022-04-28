@@ -29,13 +29,12 @@ function Home() {
       <main style={{ padding: "0px" }}>
         <div style={{ backgroundImage: `url(${picture4})` }}>
           <div>
-            <img src={picture} width="100%" height="50%" />
+            <img src={picture} width="100%" height="50%" alt="lala"/>
 
             <div className="container">
-              <div className="row">
+              <div className="row" style={{display:"flex", justifyContent: "center"}}>
                 <Card
                   style={{
-                    marginTop: "-100px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -65,7 +64,6 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    marginTop: "-100px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -96,7 +94,6 @@ function Home() {
                 </Card>
                 <Card
                   style={{
-                    marginTop: "-100px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -144,6 +141,7 @@ function Home() {
                   src={picture5}
                   width="50%"
                   height="50%"
+                  alt="lala"
                 />
                 <h4>Contract logistics</h4>
                 <p>
@@ -159,6 +157,7 @@ function Home() {
                   src={picture6}
                   width="50%"
                   height="50%"
+                  alt="lala"
                 />
                 <h4>Contract logistics</h4>
                 <p>
@@ -174,6 +173,7 @@ function Home() {
                   src={picture7}
                   width="50%"
                   height="50%"
+                  alt="lala"
                 />
                 <h4>Contract logistics</h4>
                 <p>
@@ -278,6 +278,7 @@ function Home() {
                   src={picture8}
                   width="102%"
                   height="100%"
+                  alt="lala"
                 />
               </Col>
             </Row>

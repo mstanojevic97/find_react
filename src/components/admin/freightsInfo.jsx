@@ -58,7 +58,6 @@ function Row() {
     const [freightFree, setFreightFree] = useState([]);
       useEffect(() =>{
         getCompanyData().then((res) =>{
-            debugger
             setFreightFree(res.freightFree);
         })
     },[]);

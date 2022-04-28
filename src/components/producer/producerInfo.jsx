@@ -8,7 +8,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import {useEffect, useState} from 'react'
-import {getCompany, getData,getCompanyData} from '../../requests/admin'
+import {
+  //getCompany, 
+  //getData,
+  getCompanyData} from '../../requests/admin'
 
 function ProducerData(){
     const [company, setCompany] = useState([]);
@@ -40,7 +43,7 @@ function ProducerData(){
                   <TableCell align="center">{company.VAT}</TableCell>
                   <TableCell align="center">{company.email}</TableCell>
                   <TableCell align="center">
-                    <a href="#">Edit</a>
+                    <a href="/#">Edit</a>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -53,11 +56,9 @@ function ProducerData(){
 
   
 function Row() {
-    const [open, setOpen] = React.useState(false);
     const [freightFree, setFreightFree] = useState([]);
       useEffect(() =>{
         getCompanyData().then((res) =>{
-            debugger
             setFreightFree(res.freightFree);
         })
     },[]);
@@ -91,7 +92,7 @@ function Row() {
                         <TableCell key={freightFreee.length} align='center'>{freightFreee.length}</TableCell>
                         <TableCell key={freightFreee.note} align='center'>{freightFreee.note}</TableCell>
                         <TableCell key={freightFreee.price} align='center'>{freightFreee.price}</TableCell>
-                        <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='#'>Izmeni</a></TableCell>
+                        <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='/#'>Izmeni</a></TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
@@ -105,7 +106,6 @@ function Row() {
 
 
 function Row2() {
-    const [open, setOpen] = React.useState(false);
     const [freightTaken, setFreightTaken] = useState([]);
       useEffect(() =>{
         getCompanyData().then((res) =>{
