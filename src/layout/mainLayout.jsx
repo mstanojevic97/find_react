@@ -11,11 +11,6 @@ import {
   CNavbarNav,
   CNavItem,
   CNavLink,
-  CDropdown,
-  CDropdownToggle,
-  CDropdownMenu,
-  CDropdownItem,
-  CDropdownDivider
 } from "@coreui/react";
 
 
@@ -38,17 +33,14 @@ return (
               </CNavLink>
             </CNavItem>
             <CNavItem>
-              <CNavLink href="#">Link</CNavLink>
+              <CNavLink href="#">Freight</CNavLink>
             </CNavItem>
-            <CDropdown variant="nav-item" popper={false}>
-              <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem href="#">Action</CDropdownItem>
-                <CDropdownItem href="#">Another action</CDropdownItem>
-                <CDropdownDivider />
-                <CDropdownItem href="#">Something else here</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
+            <CNavItem>
+              <CNavLink href="#">Offer</CNavLink>
+            </CNavItem>
+            <CNavItem>
+              <CNavLink href="#">About</CNavLink>
+            </CNavItem>
             
             <CNavbarNav className="justify-content-end" style={{ width: "100%" }}>  
               <CNavLink href="/login">LogIn</CNavLink>

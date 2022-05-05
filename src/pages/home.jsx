@@ -18,12 +18,6 @@ import { MdRecycling } from "react-icons/md";
 import { FaGasPump } from "react-icons/fa";
 import { GoPackage } from "react-icons/go";
 
-
-
-
-
-
-
 function Home() {
     return (
       <main style={{ padding: "0px" }}>
