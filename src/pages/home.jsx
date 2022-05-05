@@ -125,7 +125,7 @@ function Home() {
           </h2>
           <p>TAILORED LOGISTIC SERVICES</p>
         </div>
-        <div class="text-center">
+        <div className="text-center">
           <Container>
             <Row>
               <Col sm={4}>
