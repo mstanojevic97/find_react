@@ -19,16 +19,20 @@ const customStyles = {
     },
 };
 
-const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
+const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
     const [loads, setLoads] = useState([]); 
 
-    const [weight, setWeight] = useState('');
-    const [length, setLength] = useState('');
-    const [warehouse, setWarehouse] = useState('');
-    const [destination, setDestination] = useState('');
-    const [note, setNote] = useState('');
-    const [price, setPrice] = useState('');
-    const [load, setLoad] = useState()
+    const [idFreight] = useState(data.idFreight);
+    const [weight, setWeight] = useState(data.weight);
+    const [length, setLength] = useState(data.length);
+    const [warehouse, setWarehouse] = useState(data.warehouse);
+    const [destination, setDestination] = useState(data.destination);
+    const [note, setNote] = useState(data.note);
+    const [price, setPrice] = useState(data.price);
+    const [load, setLoad] = useState({
+        value: data.idLoad,
+        label: data.loadType
+    });
 
     const [weightValidator, setWeightValidator] = useState('');
     const [lengthValidator, setLengthValidator] = useState('');
@@ -102,13 +106,14 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
 
         if(valid) {
             const data = {
+                idFreight: idFreight,
                 weight: parseFloat(weight),
                 length: parseFloat(length),
                 warehouse: warehouse,
                 destination: destination,
                 note: note,
                 price: parseFloat(price),
-                load: load
+                idLoad: load.value
             }
 
             editFreight(data)
@@ -117,7 +122,6 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
                 handleClose();
             })
             .catch((err) => {
-                debugger
                 alert(err);
                 console.log(err);
             })
@@ -143,7 +147,8 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             }}>
             <input
                 placeholder='Weight' 
-                className="form-control addFreight-input" 
+                className="form-control addFreight-input"
+                value={weight}
                 onChange={(e) => {
                     setWeight(e.target.value);
                     setWeightValidator('')
@@ -152,7 +157,8 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             {weightValidator && <label className='addFreight-validator-label'>{weightValidator}</label>}
             <input 
                 placeholder='Length' 
-                className="form-control addFreight-input" 
+                className="form-control addFreight-input"
+                value={length}
                 onChange={(e) => {
                     setLength(e.target.value);
                     setLengthValidator('')
@@ -161,7 +167,8 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             {lengthValidator && <label className='addFreight-validator-label'>{lengthValidator}</label>}
             <input 
                 placeholder='Warehouse' 
-                className="form-control addFreight-input" 
+                className="form-control addFreight-input"
+                value={warehouse}
                 onChange={(e) => {
                     setWarehouse(e.target.value);
                     setWarehouseValidator('');
@@ -170,7 +177,8 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             {warehouseValidator && <label className='addFreight-validator-label'>{warehouseValidator}</label>}
             <input 
                 placeholder='Destination' 
-                className="form-control addFreight-input" 
+                className="form-control addFreight-input"
+                value={destination}
                 onChange={(e) => {
                     setDestination(e.target.value);
                     setDestinationValidator('');
@@ -180,6 +188,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             <input 
                 placeholder='Note' 
                 className="form-control addFreight-input" 
+                value={note}
                 onChange={(e) => {
                     setNote(e.target.value);
                     setNoteValidator('');
@@ -189,6 +198,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             <input 
                 placeholder='Price' 
                 className="form-control addFreight-input" 
+                value={price}
                 onChange={(e) => {
                     setPrice(e.target.value);
                     setPriceValidator('');
@@ -197,8 +207,9 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess}) => {
             {priceValidator && <label className='addFreight-validator-label'>{priceValidator}</label>}
             <Select 
                 options={loads}
+                value ={load}
                 onChange={(e) => {
-                    setLoad(e.value);
+                    setLoad(e);
                     setLoadValidator('')
                 }}
             />
