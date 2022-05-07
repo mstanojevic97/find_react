@@ -28,7 +28,7 @@ return (
         <CCollapse className="navbar-collapse" visible={visible} >
           <CNavbarNav className="justify-content-end" style={{ width: "100%" ,marginTop:"-14px"}} >
             <CNavItem>
-              <CNavLink href="#" active>
+              <CNavLink href="/" active>
                 Home
               </CNavLink>
             </CNavItem>
@@ -44,6 +44,7 @@ return (
             
             <CNavbarNav className="justify-content-end" style={{ width: "100%" }}>  
               <CNavLink href="/login">LogIn</CNavLink>
+              <CNavLink href="/producer">My Page</CNavLink>
               <CNavLink href="/register">Register</CNavLink>
             </CNavbarNav>
           </CNavbarNav>

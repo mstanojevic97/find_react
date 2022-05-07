@@ -11,11 +11,16 @@ import { useState } from 'react'
 import AddFreightModal from "./AddFreightModal"
 import SuccessInfoModal from "../modals/SuccessInfoModal"
 import EditFreightModal from './EditFreightModal'
+import DeleteFreightModal from './DeleteFreightModal'
+import EditCompanyModal from './EditCompanyModal'
 
 export function ProducerData({companyData}) {
   const [addFreightModalOpen, setAddFreightModalOpen] = useState(false);
   const [successInfoModalOpen, setSuccessInfoModalOpen] = useState(false);
   const [editFreightModalOpen, setEditFreightModalOpen] = useState(false);
+  const [deleteFreightModalOpen, setDeleteFreightModalOpen] = useState(false);
+  const [editCompanyModalOpen, setEditCompanyModalOpen] = useState(false);
+  const [editCompanyModalData, setEditCompanyModalData] = useState();
 
   const [company] = useState(companyData);
 
@@ -24,6 +29,16 @@ export function ProducerData({companyData}) {
   }
   const editFreightModalHandleClose = () => {
     setEditFreightModalOpen(false);
+  }
+  const deleteFreightModalHandleClose = () => {
+    setDeleteFreightModalOpen(false);
+  }
+  const editCompanyModalHandleClose = () => {
+    setEditCompanyModalOpen(false);
+  }
+  const editCompanyModalHandleClick = (data) => {
+    setEditCompanyModalOpen(true);
+    setEditCompanyModalData(data);
   }
 
 
@@ -44,6 +59,24 @@ export function ProducerData({companyData}) {
             handleClose={editFreightModalHandleClose}
             onSuccess={() => setEditFreightModalOpen(true)} />
           : ''
+      }
+      {
+        editCompanyModalOpen ?
+          <EditCompanyModal
+            isOpen={editCompanyModalOpen}
+            handleClose={editCompanyModalHandleClose}
+            onSuccess={()=> setEditCompanyModalOpen(true)}
+            data={editCompanyModalData}
+            /> 
+            : ''
+      }
+      {
+        deleteFreightModalOpen?
+          <DeleteFreightModal
+            isOpen={deleteFreightModalOpen}
+            handleClose={deleteFreightModalHandleClose}
+            onSuccess={() => setDeleteFreightModalOpen(true)}/> 
+            : ''
       }
       {
         successInfoModalOpen ?
@@ -89,11 +122,10 @@ export function ProducerData({companyData}) {
                       size="lg"
                       className="justify-content-center"
                       style={{
-                        float: "right",
                         marginBottom: "10px",
                         marginRight: "10px",
                       }}
-                      onClick={() => setEditFreightModalOpen(true)}
+                      onClick={() => editCompanyModalHandleClick(company)}
                     >
                       Edit
                     </Button>
@@ -116,7 +148,8 @@ export function ProducerRow({freightFreeParam}) {
   const [editFreightModalOpen, setEditFreightModalOpen] = useState(false);
   const [editFreightModalData, setEditFreightModalData] = useState();
   const [successInfoModalOpen, setSuccessInfoModalOpen] = useState(false);
-
+  const [deleteFreightModalOpen, setDeleteFreightModalOpen] = useState(false);
+  const [deleteFreightModalData, setDeleteFreightModalData] = useState();
   const editFreightModalHandleClose = () => {
     setEditFreightModalOpen(false);
     setEditFreightModalData();
@@ -125,6 +158,14 @@ export function ProducerRow({freightFreeParam}) {
   const handleEditClick = (data) => {
     setEditFreightModalData(data)
     setEditFreightModalOpen(true);
+  }
+  const deleteFreightModalHandleClose =() => {
+    setDeleteFreightModalOpen(false);
+    setDeleteFreightModalData();
+  }
+  const handleDeleteClick = (data) =>{
+    setDeleteFreightModalOpen(true);
+    setDeleteFreightModalData(data);
   }
 
 
@@ -150,6 +191,16 @@ export function ProducerRow({freightFreeParam}) {
             }}
             message="Freight has been successfully editted." />
           : ''
+      }
+      {
+        deleteFreightModalOpen ?
+        <DeleteFreightModal
+          isOpen={deleteFreightModalOpen}
+          handleClose={deleteFreightModalHandleClose}
+          onSuccess={() => setSuccessInfoModalOpen(true)}
+          data = {deleteFreightModalData}
+          message = "Freight has been deleted!"
+        /> : ''
       }
       <React.Fragment>
         <div>
@@ -183,16 +234,16 @@ export function ProducerRow({freightFreeParam}) {
                         {freightFreee.destination}
                       </TableCell>
                       <TableCell key={freightFreee.weight} align="center">
-                        {freightFreee.weight}
+                        {freightFreee.weight} Tons
                       </TableCell>
                       <TableCell key={freightFreee.length} align="center">
-                        {freightFreee.length}
+                        {freightFreee.length} M
                       </TableCell>
                       <TableCell key={freightFreee.note} align="center">
                         {freightFreee.note}
                       </TableCell>
                       <TableCell key={freightFreee.price} align="center">
-                        {freightFreee.price}
+                        {freightFreee.price} €
                       </TableCell>
                       <TableCell key={freightFreee.loadType} align="center">
                         {freightFreee.loadType}
@@ -207,7 +258,7 @@ export function ProducerRow({freightFreeParam}) {
                             marginBottom: "10px",
                             marginRight: "10px",
                           }}
-                          onClick={() => (true)}
+                          onClick={() => handleDeleteClick(freightFreee)}
                         >
                           Delete
                         </Button>
@@ -240,7 +291,7 @@ export function ProducerRow({freightFreeParam}) {
 
 export function ProducerRow2({freightTakenParam}) {
   const [freightTaken] = useState(freightTakenParam);
-
+  console.log(freightTakenParam);
   return (
     <React.Fragment>
       <div>
@@ -255,9 +306,13 @@ export function ProducerRow2({freightTakenParam}) {
                   <TableCell align="center">Destination</TableCell>
                   <TableCell align='center'>Weight</TableCell>
                   <TableCell align='center'>Length</TableCell>
+                  <TableCell align='center'>Load Type</TableCell>
                   <TableCell align='center'>Note</TableCell>
                   <TableCell align='center'>Price</TableCell>
-                  <TableCell align='center'>Action</TableCell>
+                  <TableCell align='center'>Status</TableCell>
+                  <TableCell align='center'>Supplier</TableCell>
+                  <TableCell align='center'>Email</TableCell>
+                  <TableCell align='center'>VAT</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -266,11 +321,15 @@ export function ProducerRow2({freightTakenParam}) {
                     <TableCell key={freightTakenn.idFreight} align='left'>{freightTakenn.idFreight}</TableCell>
                     <TableCell key={freightTakenn.warehouse} align='center'>{freightTakenn.warehouse}</TableCell>
                     <TableCell key={freightTakenn.destination} align='center'>{freightTakenn.destination}</TableCell>
-                    <TableCell key={freightTakenn.weight} align='center'>{freightTakenn.weight}</TableCell>
-                    <TableCell key={freightTakenn.length} align='center'>{freightTakenn.length}</TableCell>
+                    <TableCell key={freightTakenn.weight} align='center'>{freightTakenn.weight} Tons</TableCell>
+                    <TableCell key={freightTakenn.length} align='center'>{freightTakenn.length} M</TableCell>
+                    <TableCell key={freightTakenn.loadType} align='center'>{freightTakenn.loadType}</TableCell>
                     <TableCell key={freightTakenn.note} align='center'>{freightTakenn.note}</TableCell>
-                    <TableCell key={freightTakenn.price} align='center'>{freightTakenn.price}</TableCell>
-                    <TableCell align='center'><a href='/freight'>Edit</a>/<a href='/#'>Delete</a></TableCell>
+                    <TableCell key={freightTakenn.price} align='center'>{freightTakenn.price} €</TableCell>
+                    <TableCell key={freightTakenn.statusName} align='center'>{freightTakenn.statusName}</TableCell>
+                    <TableCell key={freightTakenn.companyName} align='center'>{freightTakenn.companyName}</TableCell>
+                    <TableCell key={freightTakenn.email} align='center'>{freightTakenn.email}</TableCell>
+                    <TableCell key={freightTakenn.VAT} align='center'>{freightTakenn.VAT}</TableCell>
                   </TableRow>
                 )) : ''}
               </TableBody>

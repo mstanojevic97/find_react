@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import Button from '@mui/material/Button';
 import {getLoads} from '../../requests/common'
 import Select from 'react-select'
-import './AddFreightModal.css'
+import './EditFreightModal.css'
 import {editFreight} from '../../requests/producer';
 
 const customStyles = {
@@ -21,8 +21,8 @@ const customStyles = {
 
 const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
     const [loads, setLoads] = useState([]); 
-
     const [idFreight] = useState(data.idFreight);
+    
     const [weight, setWeight] = useState(data.weight);
     const [length, setLength] = useState(data.length);
     const [warehouse, setWarehouse] = useState(data.warehouse);
@@ -135,7 +135,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
           onRequestClose={handleClose}
           style={customStyles}
           contentLabel="Example Modal"
-        >
+        > 
           <h2 style={{textAlign: "center"}}>Edit Freight</h2>
           <div style={{
               display:"flex", 
@@ -145,7 +145,8 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
               width: "60%",
               margin: "auto"
             }}>
-            <input
+                <label>Weight</label>
+                <input
                 placeholder='Weight' 
                 className="form-control addFreight-input"
                 value={weight}
@@ -155,6 +156,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 }}
             />
             {weightValidator && <label className='addFreight-validator-label'>{weightValidator}</label>}
+            <label>Length</label>
             <input 
                 placeholder='Length' 
                 className="form-control addFreight-input"
@@ -165,6 +167,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 }}
             />
             {lengthValidator && <label className='addFreight-validator-label'>{lengthValidator}</label>}
+            <label>Warehouse</label>
             <input 
                 placeholder='Warehouse' 
                 className="form-control addFreight-input"
@@ -175,6 +178,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 }}
             />
             {warehouseValidator && <label className='addFreight-validator-label'>{warehouseValidator}</label>}
+            <label>Destination</label>
             <input 
                 placeholder='Destination' 
                 className="form-control addFreight-input"
@@ -185,6 +189,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 }}
             />
             {destinationValidator && <label className='addFreight-validator-label'>{destinationValidator}</label>}
+            <label>Note</label>
             <input 
                 placeholder='Note' 
                 className="form-control addFreight-input" 
@@ -195,6 +200,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 }}
             />
             {noteValidator && <label className='addFreight-validator-label'>{noteValidator}</label>}
+            <label>Price</label>
             <input 
                 placeholder='Price' 
                 className="form-control addFreight-input" 
@@ -205,6 +211,7 @@ const EditFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 }}
             />
             {priceValidator && <label className='addFreight-validator-label'>{priceValidator}</label>}
+            <label>Load Type</label>
             <Select 
                 options={loads}
                 value ={load}

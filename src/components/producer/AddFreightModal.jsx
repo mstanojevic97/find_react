@@ -142,7 +142,7 @@ const AddFreightModal = ({isOpen, handleClose, onSuccess}) => {
               margin: "auto"
             }}>
             <input
-                placeholder='Weight' 
+                placeholder='Weight (Tons)'
                 className="form-control addFreight-input" 
                 onChange={(e) => {
                     setWeight(e.target.value);
@@ -151,7 +151,7 @@ const AddFreightModal = ({isOpen, handleClose, onSuccess}) => {
             />
             {weightValidator && <label className='addFreight-validator-label'>{weightValidator}</label>}
             <input 
-                placeholder='Length' 
+                placeholder='Length (M)'
                 className="form-control addFreight-input" 
                 onChange={(e) => {
                     setLength(e.target.value);
@@ -187,7 +187,7 @@ const AddFreightModal = ({isOpen, handleClose, onSuccess}) => {
             />
             {noteValidator && <label className='addFreight-validator-label'>{noteValidator}</label>}
             <input 
-                placeholder='Price' 
+                placeholder='Price (€)'
                 className="form-control addFreight-input" 
                 onChange={(e) => {
                     setPrice(e.target.value);

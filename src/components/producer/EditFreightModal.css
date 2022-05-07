@@ -1,0 +1,23 @@
+.css-b62m3t-container {
+    width: 100%;
+    margin-top: 10px;
+} 
+
+.addFreight-input {
+    width: "50%";
+    margin-top: 10px
+}
+
+.addFreight-btns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 60%;
+}
+
+.addFreight-validator-label {
+    color: red;
+}
