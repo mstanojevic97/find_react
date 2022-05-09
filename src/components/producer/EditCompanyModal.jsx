@@ -44,7 +44,6 @@ const EditCompanyModal = ({isOpen, handleClose, onSuccess, data}) => {
             valid = false;
             setEmailValidator('Required field!');
         }
-        debugger
         if(valid) {
             const data = {
                 idCompany:idCompany,

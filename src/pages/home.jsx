@@ -28,6 +28,7 @@ function Home() {
             <div className="container">
               <div className="row" style={{display:"flex", justifyContent: "center"}}>
                 <Card
+                  id="card"
                   style={{
                     display: "flex",
                     justifyContent: "center",
@@ -120,7 +121,7 @@ function Home() {
           </div>
         </div>
         <div style={{ marginTop: "25px" }} className="text-center">
-          <h2>
+          <h2 id="offer">
             <b>What we offer</b>
           </h2>
           <p>TAILORED LOGISTIC SERVICES</p>
@@ -188,6 +189,7 @@ function Home() {
                   }}
                 >
                   <h3
+                    id="about"
                     style={{
                       color: "#fff",
                       fontFamily: "Raleway",
@@ -299,6 +301,13 @@ function Home() {
           
           </Col>
           </Row>
+          <div style={{
+             display: "flex",
+             justifyContent: "center",
+             alignItems: "center",
+          }}>
+            <a style={{align:"center", color:"white"}} href='#top'>Back to top</a>
+          </div>
           </Container>
         </div>
       </main>

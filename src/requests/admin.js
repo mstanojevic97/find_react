@@ -12,5 +12,7 @@ export async function getCompanyData(){
     return requestWithAuthHeder("/home/producer", "get");
 }
 
-
+export async function getSupplierData(){
+    return requestWithAuthHeder("/home/supplier","get");
+}
 

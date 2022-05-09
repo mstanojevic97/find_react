@@ -44,7 +44,7 @@ const DeleteFreightModal = ({isOpen, handleClose, onSuccess, data}) => {
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <h2 style={{textAlign: "center"}}>Delete Freight</h2>
+                <h2 style={{textAlign: "center"}}>Delete Freight?</h2>
                 <div style={{
                     display:"flex",
                     flexDirection:"column", 

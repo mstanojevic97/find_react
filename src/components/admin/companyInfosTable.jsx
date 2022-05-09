@@ -35,7 +35,7 @@ function AdminData(){
                 <TableCell>{admin.name}</TableCell>
                 <TableCell align='center'>{admin.surname}</TableCell>
                 <TableCell align='center'>{admin.email}</TableCell>
-                <TableCell align='center'><a href='/#'>Edit</a></TableCell>
+                <TableCell align='center'> <a href='/#'>Edit</a></TableCell>
               </TableRow>
             </TableBody>
           </Table>

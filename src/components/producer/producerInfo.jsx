@@ -90,7 +90,7 @@ export function ProducerData({companyData}) {
           : ''
       }
 
-      <div>
+      <div style={{marginLeft:10, marginRight:10}}>
         <h3>About Company</h3>
         <Button
           variant="contained"
@@ -178,6 +178,7 @@ export function ProducerRow({freightFreeParam}) {
             handleClose={editFreightModalHandleClose}
             onSuccess={() => setSuccessInfoModalOpen(true)} 
             data = {editFreightModalData}
+            
           />
           : ''
       }
@@ -203,7 +204,7 @@ export function ProducerRow({freightFreeParam}) {
         /> : ''
       }
       <React.Fragment>
-        <div>
+        <div style={{marginLeft:10, marginRight:10}}>
           <h3>Free Freights</h3>
           <div>
             <TableContainer component={Paper}>
@@ -251,7 +252,8 @@ export function ProducerRow({freightFreeParam}) {
                       <TableCell align="center">
                         <Button
                           variant="outlined"
-                          size="error"
+                          color = "warning"
+                          size="lg"
                           className="justify-content-end"
                           style={{
                             float: "right",
@@ -294,7 +296,7 @@ export function ProducerRow2({freightTakenParam}) {
   console.log(freightTakenParam);
   return (
     <React.Fragment>
-      <div>
+      <div style={{marginLeft:10, marginRight:10}}>
         <h3>Taken Freights</h3>
         <div>
           <TableContainer component={Paper}>
@@ -330,6 +332,57 @@ export function ProducerRow2({freightTakenParam}) {
                     <TableCell key={freightTakenn.companyName} align='center'>{freightTakenn.companyName}</TableCell>
                     <TableCell key={freightTakenn.email} align='center'>{freightTakenn.email}</TableCell>
                     <TableCell key={freightTakenn.VAT} align='center'>{freightTakenn.VAT}</TableCell>
+                  </TableRow>
+                )) : ''}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+export function ProducerRow3({freightCompletedParam}) {
+  const [freightCompleted] = useState(freightCompletedParam);
+  console.log(freightCompletedParam);
+  return (
+    <React.Fragment>
+      <div style={{marginLeft:10, marginRight:10}}>
+        <h3>Completed Freights</h3>
+        <div>
+          <TableContainer component={Paper}>
+            <Table aria-label="collapsible table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">IdFreight</TableCell>
+                  <TableCell align="center">Warehouse</TableCell>
+                  <TableCell align="center">Destination</TableCell>
+                  <TableCell align='center'>Weight</TableCell>
+                  <TableCell align='center'>Length</TableCell>
+                  <TableCell align='center'>Load Type</TableCell>
+                  <TableCell align='center'>Note</TableCell>
+                  <TableCell align='center'>Price</TableCell>
+                  <TableCell align='center'>Supplier</TableCell>
+                  <TableCell align='center'>Email</TableCell>
+                  <TableCell align='center'>VAT</TableCell>
+                  <TableCell align='center'>Status</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {freightCompleted ? freightCompleted.map((freightCompletedd) => (
+                  <TableRow>
+                    <TableCell key={freightCompletedd.idFreight} align='left'>{freightCompletedd.idFreight}</TableCell>
+                    <TableCell key={freightCompletedd.warehouse} align='center'>{freightCompletedd.warehouse}</TableCell>
+                    <TableCell key={freightCompletedd.destination} align='center'>{freightCompletedd.destination}</TableCell>
+                    <TableCell key={freightCompletedd.weight} align='center'>{freightCompletedd.weight} Tons</TableCell>
+                    <TableCell key={freightCompletedd.length} align='center'>{freightCompletedd.length} M</TableCell>
+                    <TableCell key={freightCompletedd.loadType} align='center'>{freightCompletedd.loadType}</TableCell>
+                    <TableCell key={freightCompletedd.note} align='center'>{freightCompletedd.note}</TableCell>
+                    <TableCell key={freightCompletedd.price} align='center'>{freightCompletedd.price} €</TableCell>
+                    <TableCell key={freightCompletedd.companyName} align='center'>{freightCompletedd.companyName}</TableCell>
+                    <TableCell key={freightCompletedd.email} align='center'>{freightCompletedd.email}</TableCell>
+                    <TableCell key={freightCompletedd.VAT} align='center'>{freightCompletedd.VAT}</TableCell>
+                    <TableCell key={freightCompletedd.statusName} align='center' style={{background:"lightGreen", fontWeight:"bold"}}>{freightCompletedd.statusName}</TableCell>
                   </TableRow>
                 )) : ''}
               </TableBody>
