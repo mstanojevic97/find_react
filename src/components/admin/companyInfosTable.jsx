@@ -17,7 +17,7 @@ function AdminData(){
       })
   },[]);
   return(
-    <div>
+    <div style={{marginLeft:10, marginRight:10}}>
       <h3>About Admin</h3>
       <div>
         <TableContainer component={Paper}>
@@ -45,7 +45,7 @@ function AdminData(){
     
   );
 }
-
+ 
 
 
 function Row() {
@@ -57,7 +57,7 @@ function Row() {
   },[]);
   return (
     <React.Fragment>
-      <div>
+      <div style={{marginLeft:10, marginRight:10}}>
           <h3>Companies</h3>
         <div>
           <TableContainer component={Paper}>
@@ -80,7 +80,9 @@ function Row() {
                       <TableCell key={companie.idCompany} align='center'>{companie.email}</TableCell>
                       <TableCell key={companie.idCompany} align='center'>{companie.VAT}</TableCell>
                       <TableCell key={companie.idCompany} align='center'>{companie.roleName}</TableCell>
-                      <TableCell align='center'><a href='/freight'>pogledaj</a>/<a href='/#'>Izmeni</a></TableCell>
+                      <TableCell align='center'>
+                        <a href='/freight'>pogledaj</a>
+                      </TableCell>
                   </TableRow>
                   ))}
               </TableBody>

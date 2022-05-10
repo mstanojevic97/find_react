@@ -38,7 +38,7 @@ function Menu() {
         <CNavLink href="/logout">LogOut</CNavLink>
       </div>
     )
-  }else{
+  }else if(rola==1){
     return (
       <div>
         <CNavLink href="/admin">My Page</CNavLink>

@@ -6,7 +6,9 @@ export async function loginUser(data){
   .then((result) => {
     localStorage.setItem('jwtToken', result.data)
     localStorage.setItem('Role', result.role)
-    localStorage.setItem('id',result.idCompany)
+    if(result.idCompany){
+      localStorage.setItem('id',result.idCompany)
+    }
   })
   .catch((err)=>{
       throw err;
