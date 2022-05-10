@@ -15,7 +15,6 @@ import Admin from './pages/admin';
 import AdminFreight from '../src/pages/adminFreights';
 import Producer from '../src/pages/producer';
 import Supplier from '../src/pages/supplier';
-import LogOut from './pages/logOut'
 
 
 const rootElement = document.getElementById("root");
@@ -31,7 +30,6 @@ render(
         <Route path="freight" element={<AdminFreight />} />
         <Route path="producer" element={<Producer />} />
         <Route path="supplier" element={<Supplier />} />
-        <Route path="logout" element={<LogOut/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,

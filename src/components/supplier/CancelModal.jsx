@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Button from '@mui/material/Button';
-import {useState} from 'react'
 import {cancelFreight} from '../../requests/supplier'
 const customStyles = {
     content: {
@@ -17,7 +16,6 @@ const customStyles = {
 };
 
 const CancelModal = ({isOpen, handleClose, onSuccess, data}) => {
-    const [dataa] = useState(data);
     const handleSave = () =>{
         cancelFreight(data)
         .then(()=>{

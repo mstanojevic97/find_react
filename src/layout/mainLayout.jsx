@@ -12,11 +12,22 @@ import {
   CNavItem,
   CNavLink,
 } from "@coreui/react";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
-  const jwt = localStorage.getItem('jwtToken');
   const rola = localStorage.getItem('Role');
-  if(!rola | rola==''){
+  const navigate = useNavigate();
+
+  const logOut = (e) => {
+    e.preventDefault();
+
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("Role");
+    localStorage.removeItem("id");
+    navigate("login")
+  }
+
+  if(!rola || rola === ''){
     return (
       <div>
         <CNavLink href="/login">LogIn</CNavLink>
@@ -24,25 +35,25 @@ function Menu() {
       </div>
     )
   }else {
-    if(rola==2){
+    if(rola==="2"){
     return(
       <div>
       <CNavLink href="/producer">My Page</CNavLink>
-      <CNavLink href="/">LogOut</CNavLink>
+      <CNavLink href="#" onClick={logOut}>LogOut</CNavLink>
       </div>
     )
-  }else if(rola==3){
+  }else if(rola==="3"){
     return (
       <div>
         <CNavLink href="/supplier">My Page</CNavLink>
-        <CNavLink href="/logout">LogOut</CNavLink>
+        <CNavLink href="#" onClick={logOut}>LogOut</CNavLink>
       </div>
     )
-  }else if(rola==1){
+  }else if(rola==="1"){
     return (
       <div>
         <CNavLink href="/admin">My Page</CNavLink>
-        <CNavLink href="/">LogOut</CNavLink>
+        <CNavLink href="#" onClick={logOut}>LogOut</CNavLink>
       </div>
     )
   }

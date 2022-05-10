@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
 import Button from '@mui/material/Button';
-import {getLoads} from '../../requests/common'
-import Select from 'react-select'
 import './EditFreightModal.css'
 import {updateCompany} from '../../requests/common';
 
