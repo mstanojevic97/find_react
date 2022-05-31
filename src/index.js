@@ -24,7 +24,6 @@ render(
       <Route path="register" element={<Register />} />
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="lala" element={<Lala />} />
         <Route path="admin" element={<Admin />} />
         <Route path="producer" element={<Producer />} />
         <Route path="supplier" element={<Supplier />} />
