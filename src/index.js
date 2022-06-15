@@ -9,7 +9,6 @@ import {
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
-import Lala from "./pages/lala";
 import MainLayout from "./layout/mainLayout";
 import Admin from './pages/admin';
 import Producer from '../src/pages/producer';
